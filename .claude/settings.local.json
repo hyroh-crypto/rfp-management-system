@@ -8,7 +8,11 @@
       "Bash(npm run build:*)",
       "Bash(grep:*)",
       "Bash(ls:*)",
-      "Skill(bkit:phase-9-deployment)"
+      "Skill(bkit:phase-9-deployment)",
+      "Bash(vercel:*)",
+      "Bash(gh repo create:*)",
+      "WebFetch(domain:rfp-management-system-three.vercel.app)",
+      "Bash(git add:*)"
     ]
   }
 }
