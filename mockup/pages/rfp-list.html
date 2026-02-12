@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RFP 목록 - RFP Management System</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../styles/base/variables.css">
+  <link rel="stylesheet" href="../styles/base/reset.css">
+  <link rel="stylesheet" href="../styles/components/button.css">
+  <link rel="stylesheet" href="../styles/components/card.css">
+  <link rel="stylesheet" href="../styles/components/badge.css">
+  <link rel="stylesheet" href="../styles/pages/rfp-list.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <div class="header__content">
+        <div class="header__logo">
+          <h1>RFP Manager</h1>
+        </div>
+        <nav class="header__nav">
+          <a href="#" class="nav-link nav-link--active">RFP 목록</a>
+          <a href="#" class="nav-link">제안서</a>
+          <a href="#" class="nav-link">고객사</a>
+        </nav>
+        <div class="header__actions">
+          <button class="btn btn--primary">
+            <span>+</span>
+            새 RFP
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="main">
+    <div class="container">
+      <!-- Page Header -->
+      <div class="page-header">
+        <div>
+          <h2 class="page-title">제안요청서 목록</h2>
+          <p class="page-description">접수된 RFP를 확인하고 분석을 시작하세요</p>
+        </div>
+        <div class="page-header__stats">
+          <div class="stat-card">
+            <span class="stat-card__value" id="total-count">-</span>
+            <span class="stat-card__label">전체</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-card__value stat-card__value--warning" id="analyzing-count">-</span>
+            <span class="stat-card__label">분석 중</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-card__value stat-card__value--success" id="analyzed-count">-</span>
+            <span class="stat-card__label">분석 완료</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Filters -->
+      <div class="filters">
+        <div class="filter-group">
+          <button class="btn btn--secondary btn--sm filter-btn filter-btn--active" data-filter="all">
+            전체
+          </button>
+          <button class="btn btn--secondary btn--sm filter-btn" data-filter="received">
+            접수됨
+          </button>
+          <button class="btn btn--secondary btn--sm filter-btn" data-filter="analyzing">
+            분석 중
+          </button>
+          <button class="btn btn--secondary btn--sm filter-btn" data-filter="analyzed">
+            분석 완료
+          </button>
+        </div>
+        <div class="search-box">
+          <input type="text" placeholder="RFP 검색..." class="search-input">
+        </div>
+      </div>
+
+      <!-- RFP Cards -->
+      <div id="rfp-list" class="card-grid">
+        <!-- Loading state -->
+        <div class="loading">
+          <div class="loading-spinner"></div>
+          <p>RFP 목록을 불러오는 중...</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- JavaScript -->
+  <script src="../scripts/rfp-list.js"></script>
+</body>
+</html>

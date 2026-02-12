@@ -1,0 +1,449 @@
+{
+  "timestamp": "2026-02-12T01:37:10.719Z",
+  "reason": "compaction",
+  "status": {
+    "version": "2.0",
+    "lastUpdated": "2026-02-12T01:13:38.507Z",
+    "activeFeatures": [
+      "scripts",
+      "Gemini_code_test",
+      "ui",
+      "validations",
+      "rfp",
+      "new",
+      "[id]",
+      "edit"
+    ],
+    "primaryFeature": "scripts",
+    "features": {
+      "scripts": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-02-11T06:07:51.973Z",
+          "lastUpdated": "2026-02-12T00:48:28.844Z"
+        },
+        "lastFile": "C:\\Users\\frameout_AI\\Gemini_code_test\\scripts\\seed-sample-data.ts"
+      },
+      "Gemini_code_test": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-02-11T06:26:03.840Z",
+          "lastUpdated": "2026-02-12T01:12:49.879Z"
+        },
+        "lastFile": "C:\\Users\\frameout_AI\\Gemini_code_test\\src\\services\\requirement.service.ts"
+      },
+      "ui": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-02-12T00:51:15.490Z",
+          "lastUpdated": "2026-02-12T00:57:20.752Z"
+        },
+        "lastFile": "C:\\Users\\frameout_AI\\Gemini_code_test\\src\\components\\ui\\button.tsx"
+      },
+      "validations": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-02-12T00:51:56.052Z",
+          "lastUpdated": "2026-02-12T00:51:56.052Z"
+        },
+        "lastFile": "C:\\Users\\frameout_AI\\Gemini_code_test\\src\\lib\\validations\\rfp.ts"
+      },
+      "rfp": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-02-12T00:52:56.082Z",
+          "lastUpdated": "2026-02-12T01:13:38.507Z"
+        },
+        "lastFile": "C:\\Users\\frameout_AI\\Gemini_code_test\\src\\components\\rfp\\rfp-form.tsx"
+      },
+      "new": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-02-12T00:53:46.856Z",
+          "lastUpdated": "2026-02-12T00:53:46.856Z"
+        },
+        "lastFile": "C:\\Users\\frameout_AI\\Gemini_code_test\\src\\app\\(dashboard)\\rfps\\new\\page.tsx"
+      },
+      "[id]": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-02-12T00:58:00.262Z",
+          "lastUpdated": "2026-02-12T01:13:09.087Z"
+        },
+        "lastFile": "C:\\Users\\frameout_AI\\Gemini_code_test\\src\\app\\(dashboard)\\rfps\\[id]\\page.tsx"
+      },
+      "edit": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-02-12T00:58:18.161Z",
+          "lastUpdated": "2026-02-12T00:58:18.161Z"
+        },
+        "lastFile": "C:\\Users\\frameout_AI\\Gemini_code_test\\src\\app\\(dashboard)\\rfps\\[id]\\edit\\page.tsx"
+      }
+    },
+    "pipeline": {
+      "currentPhase": 1,
+      "level": "Dynamic",
+      "phaseHistory": []
+    },
+    "session": {
+      "startedAt": "2026-02-11T05:13:37.975Z",
+      "onboardingCompleted": false,
+      "lastActivity": "2026-02-12T01:13:38.507Z"
+    },
+    "history": [
+      {
+        "timestamp": "2026-02-11T06:07:51.973Z",
+        "feature": "scripts",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-11T06:26:03.840Z",
+        "feature": "Gemini_code_test",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-11T06:26:04.386Z",
+        "feature": "Gemini_code_test",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-11T06:26:19.477Z",
+        "feature": "Gemini_code_test",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-11T06:26:24.402Z",
+        "feature": "Gemini_code_test",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-11T06:26:46.511Z",
+        "feature": "Gemini_code_test",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-11T06:28:15.502Z",
+        "feature": "Gemini_code_test",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-11T06:28:30.221Z",
+        "feature": "Gemini_code_test",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-12T00:22:16.738Z",
+        "feature": "Gemini_code_test",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-12T00:22:31.147Z",
+        "feature": "Gemini_code_test",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-12T00:22:40.867Z",
+        "feature": "Gemini_code_test",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-12T00:30:19.278Z",
+        "feature": "scripts",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-12T00:30:42.330Z",
+        "feature": "scripts",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-12T00:32:41.740Z",
+        "feature": "Gemini_code_test",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-12T00:39:08.234Z",
+        "feature": "Gemini_code_test",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-12T00:46:20.424Z",
+        "feature": "scripts",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-12T00:47:17.857Z",
+        "feature": "scripts",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-12T00:47:44.102Z",
+        "feature": "scripts",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-12T00:48:07.729Z",
+        "feature": "scripts",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-12T00:48:28.844Z",
+        "feature": "scripts",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-12T00:51:15.490Z",
+        "feature": "ui",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-12T00:51:30.941Z",
+        "feature": "ui",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-12T00:51:40.240Z",
+        "feature": "ui",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-12T00:51:56.052Z",
+        "feature": "validations",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-12T00:52:03.072Z",
+        "feature": "Gemini_code_test",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-12T00:52:10.144Z",
+        "feature": "Gemini_code_test",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-12T00:52:56.082Z",
+        "feature": "rfp",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-12T00:53:46.856Z",
+        "feature": "new",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-12T00:57:03.855Z",
+        "feature": "ui",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-12T00:57:20.752Z",
+        "feature": "ui",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-12T00:58:00.262Z",
+        "feature": "[id]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-12T00:58:18.161Z",
+        "feature": "edit",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-12T00:59:07.583Z",
+        "feature": "rfp",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-12T01:08:25.332Z",
+        "feature": "Gemini_code_test",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-12T01:08:39.772Z",
+        "feature": "Gemini_code_test",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-12T01:08:55.771Z",
+        "feature": "Gemini_code_test",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-12T01:09:03.691Z",
+        "feature": "Gemini_code_test",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-12T01:09:13.717Z",
+        "feature": "Gemini_code_test",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-12T01:09:22.463Z",
+        "feature": "Gemini_code_test",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-12T01:09:36.032Z",
+        "feature": "Gemini_code_test",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-12T01:09:43.125Z",
+        "feature": "Gemini_code_test",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-12T01:09:49.078Z",
+        "feature": "Gemini_code_test",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-12T01:09:56.424Z",
+        "feature": "Gemini_code_test",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-12T01:10:03.389Z",
+        "feature": "Gemini_code_test",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-12T01:10:11.165Z",
+        "feature": "Gemini_code_test",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-12T01:10:21.718Z",
+        "feature": "Gemini_code_test",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-12T01:10:30.877Z",
+        "feature": "Gemini_code_test",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-12T01:11:54.626Z",
+        "feature": "rfp",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-12T01:12:30.436Z",
+        "feature": "Gemini_code_test",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-12T01:12:49.879Z",
+        "feature": "Gemini_code_test",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-12T01:13:09.088Z",
+        "feature": "[id]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-12T01:13:38.507Z",
+        "feature": "rfp",
+        "phase": "do",
+        "action": "updated"
+      }
+    ]
+  }
+}

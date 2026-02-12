@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run dev:*)",
+      "Skill(bkit:pdca)",
+      "Skill(bkit:phase-7-seo-security)",
+      "Skill(bkit:phase-8-review)",
+      "Bash(npm run build:*)",
+      "Bash(grep:*)",
+      "Bash(ls:*)",
+      "Skill(bkit:phase-9-deployment)"
+    ]
+  }
+}

@@ -1,0 +1,5 @@
+# RFP Management System
+# 내부 시스템이므로 검색 엔진에서 제외
+
+User-agent: *
+Disallow: /

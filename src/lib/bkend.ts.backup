@@ -1,0 +1,134 @@
+/**
+ * bkend.ai BaaS Client
+ * REST Service API를 통해 백엔드 기능을 제공합니다.
+ */
+
+const API_BASE = process.env.NEXT_PUBLIC_BKEND_API_URL || 'https://api.bkend.ai/v1';
+const PROJECT_ID = process.env.NEXT_PUBLIC_BKEND_PROJECT_ID!;
+const ENVIRONMENT = process.env.NEXT_PUBLIC_BKEND_ENV || 'dev';
+
+interface BkendResponse<T> {
+  data: T;
+  meta?: {
+    timestamp: string;
+    requestId?: string;
+  };
+}
+
+interface BkendError {
+  error: {
+    code: string;
+    message: string;
+    details?: Array<{ field: string; message: string }>;
+  };
+}
+
+async function bkendFetch<T>(
+  path: string,
+  options: RequestInit = {}
+): Promise<BkendResponse<T>> {
+  const token = typeof window !== 'undefined'
+    ? localStorage.getItem('bkend_access_token')
+    : null;
+
+  const headers = new Headers(options.headers);
+  headers.set('Content-Type', 'application/json');
+  headers.set('x-project-id', PROJECT_ID);
+  headers.set('x-environment', ENVIRONMENT);
+
+  if (token) {
+    headers.set('Authorization', `Bearer ${token}`);
+  }
+
+  const res = await fetch(`${API_BASE}${path}`, {
+    ...options,
+    headers,
+  });
+
+  const data = await res.json();
+
+  if (!res.ok) {
+    const error = data as BkendError;
+    throw new Error(error.error?.message || 'API 요청 실패');
+  }
+
+  return data as BkendResponse<T>;
+}
+
+/**
+ * bkend.ai Authentication API
+ */
+export const auth = {
+  /** 이메일 회원가입 */
+  signup: async (body: { email: string; password: string; name: string }) => {
+    return bkendFetch<{ user: any; token: string }>('/auth/email/signup', {
+      method: 'POST',
+      body: JSON.stringify(body),
+    });
+  },
+
+  /** 이메일 로그인 */
+  signin: async (body: { email: string; password: string }) => {
+    return bkendFetch<{ user: any; token: string }>('/auth/email/signin', {
+      method: 'POST',
+      body: JSON.stringify(body),
+    });
+  },
+
+  /** 현재 사용자 정보 조회 */
+  me: () => bkendFetch('/auth/me'),
+
+  /** 토큰 갱신 */
+  refresh: (refreshToken: string) =>
+    bkendFetch('/auth/refresh', {
+      method: 'POST',
+      body: JSON.stringify({ refreshToken }),
+    }),
+
+  /** 로그아웃 */
+  signout: () => bkendFetch('/auth/signout', { method: 'POST' }),
+};
+
+/**
+ * bkend.ai Data API
+ */
+export const data = {
+  /** 목록 조회 */
+  list: <T>(table: string, params?: Record<string, string>) => {
+    const query = params ? `?${new URLSearchParams(params)}` : '';
+    return bkendFetch<T[]>(`/data/${table}${query}`);
+  },
+
+  /** 단일 조회 */
+  get: <T>(table: string, id: string) => {
+    return bkendFetch<T>(`/data/${table}/${id}`);
+  },
+
+  /** 생성 */
+  create: <T>(table: string, body: any) => {
+    return bkendFetch<T>(`/data/${table}`, {
+      method: 'POST',
+      body: JSON.stringify(body),
+    });
+  },
+
+  /** 수정 */
+  update: <T>(table: string, id: string, body: any) => {
+    return bkendFetch<T>(`/data/${table}/${id}`, {
+      method: 'PATCH',
+      body: JSON.stringify(body),
+    });
+  },
+
+  /** 삭제 */
+  delete: (table: string, id: string) => {
+    return bkendFetch<void>(`/data/${table}/${id}`, {
+      method: 'DELETE',
+    });
+  },
+};
+
+export const bkend = {
+  auth,
+  data,
+};

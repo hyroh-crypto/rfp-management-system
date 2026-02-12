@@ -1,0 +1,118 @@
+/* Card Component - Glassmorphism Style */
+
+.card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-lg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: all var(--transition-base);
+}
+
+.card:hover {
+  border-color: var(--border-color-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-xl);
+}
+
+.card--clickable {
+  cursor: pointer;
+}
+
+.card--flat {
+  background: var(--bg-secondary);
+  border-color: var(--border-color);
+  backdrop-filter: none;
+}
+
+.card--elevated {
+  box-shadow: var(--shadow-lg);
+}
+
+/* Card Header */
+.card__header {
+  margin-bottom: var(--spacing-md);
+  padding-bottom: var(--spacing-md);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.card__title {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-xs);
+}
+
+.card__subtitle {
+  font-size: var(--font-size-sm);
+  color: var(--text-tertiary);
+}
+
+/* Card Body */
+.card__body {
+  color: var(--text-secondary);
+}
+
+/* Card Footer */
+.card__footer {
+  margin-top: var(--spacing-md);
+  padding-top: var(--spacing-md);
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-sm);
+}
+
+/* Card Grid */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--spacing-lg);
+}
+
+@media (min-width: 768px) {
+  .card-grid {
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  }
+}
+
+/* Bento Grid (Trendy Layout) */
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--spacing-md);
+  grid-auto-rows: minmax(100px, auto);
+}
+
+.bento-grid .card {
+  grid-column: span 1;
+  grid-row: span 1;
+}
+
+.bento-grid .card--large {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.bento-grid .card--wide {
+  grid-column: span 2;
+}
+
+.bento-grid .card--tall {
+  grid-row: span 2;
+}
+
+@media (max-width: 768px) {
+  .bento-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .bento-grid .card--large,
+  .bento-grid .card--wide,
+  .bento-grid .card--tall {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+}

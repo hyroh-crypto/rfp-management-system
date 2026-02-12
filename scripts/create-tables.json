@@ -1,0 +1,637 @@
+{
+  "projectId": "rfp_projectnea54bxdkxpz4ltp7xx9",
+  "environment": "dev",
+  "tables": [
+    {
+      "order": 1,
+      "tableName": "users",
+      "description": "사용자 테이블 - 제안서 담당자 및 검토자",
+      "fields": [
+        {
+          "name": "email",
+          "type": "String",
+          "required": true,
+          "unique": true,
+          "description": "이메일 (로그인 ID)"
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "required": true,
+          "description": "사용자 이름"
+        },
+        {
+          "name": "role",
+          "type": "String",
+          "required": true,
+          "enum": ["admin", "manager", "writer", "reviewer"],
+          "description": "사용자 역할"
+        },
+        {
+          "name": "department",
+          "type": "String",
+          "required": false,
+          "description": "부서"
+        },
+        {
+          "name": "position",
+          "type": "String",
+          "required": false,
+          "description": "직책"
+        },
+        {
+          "name": "permissions",
+          "type": "Array",
+          "required": true,
+          "default": [],
+          "description": "권한 목록"
+        },
+        {
+          "name": "avatar",
+          "type": "String",
+          "required": false,
+          "description": "프로필 이미지 URL"
+        },
+        {
+          "name": "phone",
+          "type": "String",
+          "required": false,
+          "description": "전화번호"
+        },
+        {
+          "name": "isActive",
+          "type": "Boolean",
+          "required": true,
+          "default": true,
+          "description": "활성 상태"
+        },
+        {
+          "name": "lastLoginAt",
+          "type": "Date",
+          "required": false,
+          "description": "마지막 로그인 시각"
+        }
+      ],
+      "permissions": {
+        "admin": { "create": true, "read": true, "update": true, "delete": true },
+        "user": { "create": false, "read": true, "update": false, "delete": false },
+        "self": { "create": false, "read": true, "update": true, "delete": false },
+        "guest": { "create": false, "read": false, "update": false, "delete": false }
+      }
+    },
+    {
+      "order": 2,
+      "tableName": "clients",
+      "description": "고객사 테이블",
+      "fields": [
+        {
+          "name": "name",
+          "type": "String",
+          "required": true,
+          "description": "회사명"
+        },
+        {
+          "name": "businessNumber",
+          "type": "String",
+          "required": true,
+          "unique": true,
+          "description": "사업자등록번호"
+        },
+        {
+          "name": "industry",
+          "type": "String",
+          "required": true,
+          "description": "업종"
+        },
+        {
+          "name": "contact",
+          "type": "Object",
+          "required": true,
+          "description": "담당자 정보 (name, email, phone, position)"
+        },
+        {
+          "name": "address",
+          "type": "String",
+          "required": false,
+          "description": "주소"
+        },
+        {
+          "name": "website",
+          "type": "String",
+          "required": false,
+          "description": "웹사이트"
+        },
+        {
+          "name": "notes",
+          "type": "String",
+          "required": false,
+          "description": "메모"
+        }
+      ],
+      "permissions": {
+        "admin": { "create": true, "read": true, "update": true, "delete": true },
+        "user": { "create": true, "read": true, "update": true, "delete": false },
+        "self": { "create": false, "read": true, "update": false, "delete": false },
+        "guest": { "create": false, "read": false, "update": false, "delete": false }
+      }
+    },
+    {
+      "order": 3,
+      "tableName": "rfps",
+      "description": "제안요청서(RFP) 테이블",
+      "fields": [
+        {
+          "name": "title",
+          "type": "String",
+          "required": true,
+          "description": "제안요청서 제목"
+        },
+        {
+          "name": "clientId",
+          "type": "String",
+          "required": true,
+          "ref": "clients",
+          "description": "고객사 ID"
+        },
+        {
+          "name": "receivedDate",
+          "type": "Date",
+          "required": true,
+          "description": "접수일"
+        },
+        {
+          "name": "dueDate",
+          "type": "Date",
+          "required": true,
+          "description": "제출 마감일"
+        },
+        {
+          "name": "estimatedBudget",
+          "type": "Number",
+          "required": false,
+          "description": "예상 예산"
+        },
+        {
+          "name": "estimatedDuration",
+          "type": "Number",
+          "required": false,
+          "description": "예상 기간 (일)"
+        },
+        {
+          "name": "description",
+          "type": "String",
+          "required": true,
+          "description": "설명"
+        },
+        {
+          "name": "attachments",
+          "type": "Array",
+          "required": false,
+          "default": [],
+          "description": "첨부파일 목록"
+        },
+        {
+          "name": "status",
+          "type": "String",
+          "required": true,
+          "enum": ["received", "analyzing", "analyzed", "rejected"],
+          "default": "received",
+          "description": "진행 상태"
+        },
+        {
+          "name": "aiAnalysis",
+          "type": "Object",
+          "required": false,
+          "description": "AI 분석 결과"
+        },
+        {
+          "name": "assigneeId",
+          "type": "String",
+          "required": false,
+          "ref": "users",
+          "description": "담당자 ID"
+        },
+        {
+          "name": "analyzedAt",
+          "type": "Date",
+          "required": false,
+          "description": "분석 완료 시각"
+        }
+      ],
+      "permissions": {
+        "admin": { "create": true, "read": true, "update": true, "delete": true },
+        "user": { "create": true, "read": true, "update": true, "delete": false },
+        "self": { "create": false, "read": true, "update": false, "delete": false },
+        "guest": { "create": false, "read": false, "update": false, "delete": false }
+      }
+    },
+    {
+      "order": 4,
+      "tableName": "requirements",
+      "description": "요구사항 테이블 - RFP 요구사항 분석 결과",
+      "fields": [
+        {
+          "name": "rfpId",
+          "type": "String",
+          "required": true,
+          "ref": "rfps",
+          "description": "RFP ID"
+        },
+        {
+          "name": "category",
+          "type": "String",
+          "required": true,
+          "enum": ["functional", "non-functional", "technical", "business"],
+          "description": "요구사항 분류"
+        },
+        {
+          "name": "priority",
+          "type": "String",
+          "required": true,
+          "enum": ["must", "should", "could", "wont"],
+          "description": "우선순위 (MoSCoW)"
+        },
+        {
+          "name": "title",
+          "type": "String",
+          "required": true,
+          "description": "요구사항 제목"
+        },
+        {
+          "name": "description",
+          "type": "String",
+          "required": true,
+          "description": "상세 설명"
+        },
+        {
+          "name": "acceptanceCriteria",
+          "type": "String",
+          "required": false,
+          "description": "수용 기준"
+        },
+        {
+          "name": "complexity",
+          "type": "String",
+          "required": true,
+          "enum": ["low", "medium", "high"],
+          "description": "복잡도"
+        },
+        {
+          "name": "estimatedHours",
+          "type": "Number",
+          "required": false,
+          "description": "예상 소요 시간"
+        },
+        {
+          "name": "suggestedSolution",
+          "type": "String",
+          "required": false,
+          "description": "AI 제안 솔루션"
+        },
+        {
+          "name": "order",
+          "type": "Number",
+          "required": true,
+          "default": 0,
+          "description": "정렬 순서"
+        }
+      ],
+      "permissions": {
+        "admin": { "create": true, "read": true, "update": true, "delete": true },
+        "user": { "create": true, "read": true, "update": true, "delete": true },
+        "self": { "create": false, "read": true, "update": false, "delete": false },
+        "guest": { "create": false, "read": false, "update": false, "delete": false }
+      }
+    },
+    {
+      "order": 5,
+      "tableName": "proposals",
+      "description": "제안서 테이블",
+      "fields": [
+        {
+          "name": "rfpId",
+          "type": "String",
+          "required": true,
+          "unique": true,
+          "ref": "rfps",
+          "description": "RFP ID (1:1 관계)"
+        },
+        {
+          "name": "title",
+          "type": "String",
+          "required": true,
+          "description": "제안서 제목"
+        },
+        {
+          "name": "version",
+          "type": "String",
+          "required": true,
+          "default": "1.0.0",
+          "description": "버전"
+        },
+        {
+          "name": "status",
+          "type": "String",
+          "required": true,
+          "enum": ["drafting", "reviewing", "approved", "delivered", "won", "lost"],
+          "default": "drafting",
+          "description": "제안서 상태"
+        },
+        {
+          "name": "assigneeId",
+          "type": "String",
+          "required": true,
+          "ref": "users",
+          "description": "주 담당자 ID"
+        },
+        {
+          "name": "reviewerIds",
+          "type": "Array",
+          "required": false,
+          "default": [],
+          "description": "검토자 ID 목록"
+        },
+        {
+          "name": "executiveSummary",
+          "type": "String",
+          "required": false,
+          "description": "요약"
+        },
+        {
+          "name": "totalPrice",
+          "type": "Number",
+          "required": false,
+          "description": "총 견적 금액"
+        },
+        {
+          "name": "estimatedDuration",
+          "type": "Number",
+          "required": false,
+          "description": "예상 기간 (일)"
+        },
+        {
+          "name": "startDate",
+          "type": "Date",
+          "required": false,
+          "description": "시작 예정일"
+        },
+        {
+          "name": "endDate",
+          "type": "Date",
+          "required": false,
+          "description": "종료 예정일"
+        },
+        {
+          "name": "team",
+          "type": "Array",
+          "required": false,
+          "default": [],
+          "description": "팀 구성원 목록"
+        },
+        {
+          "name": "deliveredAt",
+          "type": "Date",
+          "required": false,
+          "description": "제출 일시"
+        },
+        {
+          "name": "resultDate",
+          "type": "Date",
+          "required": false,
+          "description": "결과 확정 일시"
+        },
+        {
+          "name": "winProbability",
+          "type": "Number",
+          "required": false,
+          "description": "수주 확률 (0-100)"
+        }
+      ],
+      "permissions": {
+        "admin": { "create": true, "read": true, "update": true, "delete": true },
+        "user": { "create": true, "read": true, "update": true, "delete": false },
+        "self": { "create": false, "read": true, "update": false, "delete": false },
+        "guest": { "create": false, "read": false, "update": false, "delete": false }
+      }
+    },
+    {
+      "order": 6,
+      "tableName": "proposal_sections",
+      "description": "제안서 섹션 테이블 - 제안서의 각 섹션별 내용",
+      "fields": [
+        {
+          "name": "proposalId",
+          "type": "String",
+          "required": true,
+          "ref": "proposals",
+          "description": "제안서 ID"
+        },
+        {
+          "name": "type",
+          "type": "String",
+          "required": true,
+          "enum": ["executive-summary", "company-intro", "requirement-analysis", "technical-approach", "ui-prototype", "timeline", "pricing", "team", "appendix"],
+          "description": "섹션 타입"
+        },
+        {
+          "name": "title",
+          "type": "String",
+          "required": true,
+          "description": "섹션 제목"
+        },
+        {
+          "name": "order",
+          "type": "Number",
+          "required": true,
+          "default": 0,
+          "description": "정렬 순서"
+        },
+        {
+          "name": "content",
+          "type": "String",
+          "required": true,
+          "default": "",
+          "description": "마크다운 형식 콘텐츠"
+        },
+        {
+          "name": "isAIGenerated",
+          "type": "Boolean",
+          "required": true,
+          "default": false,
+          "description": "AI 생성 여부"
+        },
+        {
+          "name": "aiPrompt",
+          "type": "String",
+          "required": false,
+          "description": "AI 프롬프트"
+        },
+        {
+          "name": "status",
+          "type": "String",
+          "required": true,
+          "enum": ["draft", "review", "approved"],
+          "default": "draft",
+          "description": "섹션 상태"
+        }
+      ],
+      "permissions": {
+        "admin": { "create": true, "read": true, "update": true, "delete": true },
+        "user": { "create": true, "read": true, "update": true, "delete": true },
+        "self": { "create": true, "read": true, "update": true, "delete": true },
+        "guest": { "create": false, "read": false, "update": false, "delete": false }
+      }
+    },
+    {
+      "order": 7,
+      "tableName": "ui_prototypes",
+      "description": "UI 프로토타입 테이블 - 제안서에 포함된 UI 설계",
+      "fields": [
+        {
+          "name": "proposalId",
+          "type": "String",
+          "required": true,
+          "ref": "proposals",
+          "description": "제안서 ID"
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "required": true,
+          "description": "화면명"
+        },
+        {
+          "name": "type",
+          "type": "String",
+          "required": true,
+          "enum": ["wireframe", "mockup", "interactive"],
+          "description": "프로토타입 타입"
+        },
+        {
+          "name": "order",
+          "type": "Number",
+          "required": true,
+          "default": 0,
+          "description": "정렬 순서"
+        },
+        {
+          "name": "description",
+          "type": "String",
+          "required": false,
+          "description": "화면 설명"
+        },
+        {
+          "name": "imageUrl",
+          "type": "String",
+          "required": false,
+          "description": "이미지 URL"
+        },
+        {
+          "name": "figmaUrl",
+          "type": "String",
+          "required": false,
+          "description": "Figma 링크"
+        },
+        {
+          "name": "htmlCode",
+          "type": "String",
+          "required": false,
+          "description": "HTML 코드 (interactive)"
+        },
+        {
+          "name": "isAIGenerated",
+          "type": "Boolean",
+          "required": true,
+          "default": false,
+          "description": "AI 생성 여부"
+        },
+        {
+          "name": "aiPrompt",
+          "type": "String",
+          "required": false,
+          "description": "AI 프롬프트"
+        },
+        {
+          "name": "generatedFrom",
+          "type": "String",
+          "required": false,
+          "description": "생성 출처 (요구사항 ID 등)"
+        },
+        {
+          "name": "status",
+          "type": "String",
+          "required": true,
+          "enum": ["generating", "draft", "reviewing", "approved"],
+          "default": "draft",
+          "description": "프로토타입 상태"
+        }
+      ],
+      "permissions": {
+        "admin": { "create": true, "read": true, "update": true, "delete": true },
+        "user": { "create": true, "read": true, "update": true, "delete": true },
+        "self": { "create": true, "read": true, "update": true, "delete": true },
+        "guest": { "create": false, "read": false, "update": false, "delete": false }
+      }
+    },
+    {
+      "order": 8,
+      "tableName": "comments",
+      "description": "코멘트/피드백 테이블 - 제안서, 프로토타입, 섹션에 대한 코멘트",
+      "fields": [
+        {
+          "name": "targetType",
+          "type": "String",
+          "required": true,
+          "enum": ["proposal", "ui-prototype", "section"],
+          "description": "코멘트 대상 타입"
+        },
+        {
+          "name": "targetId",
+          "type": "String",
+          "required": true,
+          "description": "대상 ID"
+        },
+        {
+          "name": "content",
+          "type": "String",
+          "required": true,
+          "description": "코멘트 내용"
+        },
+        {
+          "name": "type",
+          "type": "String",
+          "required": true,
+          "enum": ["comment", "feedback", "approval", "rejection"],
+          "default": "comment",
+          "description": "코멘트 타입"
+        },
+        {
+          "name": "authorId",
+          "type": "String",
+          "required": true,
+          "ref": "users",
+          "description": "작성자 ID"
+        },
+        {
+          "name": "parentId",
+          "type": "String",
+          "required": false,
+          "description": "답글인 경우 부모 코멘트 ID"
+        },
+        {
+          "name": "isResolved",
+          "type": "Boolean",
+          "required": true,
+          "default": false,
+          "description": "해결됨 여부"
+        }
+      ],
+      "permissions": {
+        "admin": { "create": true, "read": true, "update": true, "delete": true },
+        "user": { "create": true, "read": true, "update": true, "delete": false },
+        "self": { "create": true, "read": true, "update": true, "delete": true },
+        "guest": { "create": false, "read": false, "update": false, "delete": false }
+      }
+    }
+  ]
+}

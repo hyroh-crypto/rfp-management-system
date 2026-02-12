@@ -1,0 +1,74 @@
+{
+  "data": [
+    {
+      "id": "rfp-1",
+      "title": "전사 ERP 시스템 구축",
+      "clientName": "ABC 제조",
+      "status": "analyzing",
+      "dueDate": "2026-03-15",
+      "receivedDate": "2026-02-01",
+      "estimatedBudget": 500000000,
+      "priority": "must",
+      "aiAnalysis": {
+        "summary": "제조업 특화 ERP 구축 요청. 재고관리, 생산관리, 회계 연동 필요.",
+        "keyRequirements": [
+          "재고 관리 시스템",
+          "생산 계획 관리",
+          "회계 시스템 연동",
+          "모바일 앱 지원"
+        ],
+        "technicalStack": ["React", "Node.js", "PostgreSQL", "React Native"],
+        "riskLevel": "medium",
+        "estimatedEffort": 8
+      }
+    },
+    {
+      "id": "rfp-2",
+      "title": "병원 예약 시스템 개발",
+      "clientName": "메디컬 센터",
+      "status": "received",
+      "dueDate": "2026-02-28",
+      "receivedDate": "2026-02-10",
+      "estimatedBudget": 150000000,
+      "priority": "should"
+    },
+    {
+      "id": "rfp-3",
+      "title": "온라인 교육 플랫폼",
+      "clientName": "에듀테크",
+      "status": "analyzed",
+      "dueDate": "2026-03-30",
+      "receivedDate": "2026-01-20",
+      "estimatedBudget": 300000000,
+      "priority": "must",
+      "aiAnalysis": {
+        "summary": "실시간 화상 강의와 LMS 통합 플랫폼.",
+        "keyRequirements": [
+          "실시간 화상 강의",
+          "학습 관리 시스템",
+          "결제 시스템",
+          "진도 관리"
+        ],
+        "technicalStack": ["Next.js", "WebRTC", "Firebase"],
+        "riskLevel": "high",
+        "estimatedEffort": 10
+      }
+    },
+    {
+      "id": "rfp-4",
+      "title": "스마트팜 IoT 시스템",
+      "clientName": "그린팜",
+      "status": "rejected",
+      "dueDate": "2026-02-20",
+      "receivedDate": "2026-01-15",
+      "estimatedBudget": 80000000,
+      "priority": "could"
+    }
+  ],
+  "pagination": {
+    "page": 1,
+    "limit": 10,
+    "total": 4,
+    "totalPages": 1
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "bkend": {
+      "type": "http",
+      "url": "https://api.bkend.ai/mcp",
+      "description": "bkend.ai BaaS platform - Backend management via MCP"
+    }
+  }
+}
