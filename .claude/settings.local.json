@@ -12,7 +12,9 @@
       "Bash(vercel:*)",
       "Bash(gh repo create:*)",
       "WebFetch(domain:rfp-management-system-three.vercel.app)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)"
     ]
   }
 }
