@@ -55,7 +55,7 @@ export function SignupForm() {
 
       // 3초 후 로그인 페이지로 이동
       setTimeout(() => {
-        router.push('/auth/login')
+        router.push('/login')
       }, 3000)
     } catch (err: any) {
       setError(err.message || '회원가입 중 오류가 발생했습니다')
@@ -184,7 +184,7 @@ export function SignupForm() {
       <div className="text-center pt-2">
         <span className="text-sm text-gray-400">이미 계정이 있으신가요? </span>
         <Link
-          href="/auth/login"
+          href="/login"
           className="text-sm text-blue-400 hover:text-blue-300 transition-colors font-medium"
         >
           로그인

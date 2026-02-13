@@ -97,7 +97,7 @@ export function LoginForm() {
           {...register('rememberMe')}
         />
         <Link
-          href="/auth/reset-password"
+          href="/reset-password"
           className="text-sm text-blue-400 hover:text-blue-300 transition-colors"
         >
           비밀번호 찾기
@@ -128,7 +128,7 @@ export function LoginForm() {
       <div className="text-center">
         <span className="text-sm text-gray-400">계정이 없으신가요? </span>
         <Link
-          href="/auth/signup"
+          href="/signup"
           className="text-sm text-blue-400 hover:text-blue-300 transition-colors font-medium"
         >
           회원가입
