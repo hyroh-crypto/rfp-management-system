@@ -29,7 +29,7 @@ export function Header() {
   const handleLogout = async () => {
     if (confirm('로그아웃하시겠습니까?')) {
       await logout()
-      router.push('/auth/login')
+      router.push('/login')
     }
   }
 

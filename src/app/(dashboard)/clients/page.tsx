@@ -16,17 +16,20 @@ import { SearchBar } from '@/components/common/search-bar'
 import { Pagination } from '@/components/common/pagination'
 import { LoadingState } from '@/components/common/loading-state'
 import { EmptyState } from '@/components/common/empty-state'
+import { useClients, useDeleteClient } from '@/hooks/use-clients'
 import type { Client } from '@/types/client'
 
 export default function ClientsPage() {
   const router = useRouter()
   const [search, setSearch] = useState('')
   const [currentPage, setCurrentPage] = useState(1)
-  const [isLoading, setIsLoading] = useState(false)
-  
-  // TODO: TanStack Query로 교체 (Phase 5)
-  const clients: Client[] = []
-  const totalPages = 1
+
+  // TanStack Query로 데이터 조회
+  const { data, isLoading, error } = useClients({ page: currentPage, search })
+  const deleteClient = useDeleteClient()
+
+  const clients = data?.data || []
+  const totalPages = data?.pagination.totalPages || 1
 
   const handleCreate = () => {
     router.push('/clients/new')
@@ -38,12 +41,12 @@ export default function ClientsPage() {
 
   const handleDelete = async (id: string) => {
     if (!confirm('정말 삭제하시겠습니까?')) return
-    
+
     try {
-      // TODO: 서비스 연동 (Phase 5)
-      console.log('Delete client:', id)
+      await deleteClient.mutateAsync(id)
     } catch (error) {
       console.error('Failed to delete client:', error)
+      alert('고객사 삭제에 실패했습니다')
     }
   }
 
@@ -81,6 +84,11 @@ export default function ClientsPage() {
       {/* 목록 */}
       {isLoading ? (
         <LoadingState message="고객사 목록을 불러오는 중..." />
+      ) : error ? (
+        <EmptyState
+          title="오류가 발생했습니다"
+          description={(error as Error).message}
+        />
       ) : clients.length === 0 ? (
         <EmptyState
           title="등록된 고객사가 없습니다"

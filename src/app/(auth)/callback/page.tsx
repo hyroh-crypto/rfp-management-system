@@ -33,10 +33,10 @@ export default function AuthCallbackPage() {
         }
 
         // 토큰이 없거나 유효하지 않으면 로그인 페이지로
-        router.push('/auth/login')
+        router.push('/login')
       } catch (error) {
         console.error('Auth callback error:', error)
-        router.push('/auth/login')
+        router.push('/login')
       }
     }
 

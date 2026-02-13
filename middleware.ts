@@ -20,7 +20,7 @@ const protectedRoutes = ['/rfps', '/proposals', '/clients', '/prototypes', '/set
 /**
  * 인증된 사용자는 접근할 수 없는 경로 (로그인/회원가입 등)
  */
-const authRoutes = ['/auth/login', '/auth/signup']
+const authRoutes = ['/login', '/signup']
 
 /**
  * 공개 경로 (인증 불필요)
@@ -132,7 +132,7 @@ export async function middleware(request: NextRequest) {
   if (isProtectedRoute(pathname)) {
     // 인증되지 않은 경우 로그인 페이지로 리다이렉트
     if (!session) {
-      const redirectUrl = new URL('/auth/login', request.url)
+      const redirectUrl = new URL('/login', request.url)
       redirectUrl.searchParams.set('from', pathname)
       return NextResponse.redirect(redirectUrl)
     }
@@ -147,7 +147,7 @@ export async function middleware(request: NextRequest) {
     if (!profile) {
       // 프로필이 없는 경우 로그아웃
       await supabase.auth.signOut()
-      return NextResponse.redirect(new URL('/auth/login', request.url))
+      return NextResponse.redirect(new URL('/login', request.url))
     }
 
     // 역할 기반 접근 제어
@@ -162,7 +162,7 @@ export async function middleware(request: NextRequest) {
   // 4. 루트 경로 처리
   if (pathname === '/') {
     // 로그인한 경우 대시보드로, 아니면 로그인 페이지로
-    const redirectUrl = session ? '/rfps' : '/auth/login'
+    const redirectUrl = session ? '/rfps' : '/login'
     return NextResponse.redirect(new URL(redirectUrl, request.url))
   }
 

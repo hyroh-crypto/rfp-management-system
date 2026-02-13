@@ -53,7 +53,7 @@ export default function UpdatePasswordPage() {
 
       // 3초 후 로그인 페이지로 이동
       setTimeout(() => {
-        router.push('/auth/login')
+        router.push('/login')
       }, 3000)
     } catch (err: any) {
       setError(err.message || '비밀번호 변경 중 오류가 발생했습니다')
@@ -170,7 +170,7 @@ export default function UpdatePasswordPage() {
         {/* Back to Login */}
         <div className="text-center">
           <Link
-            href="/auth/login"
+            href="/login"
             className="text-sm text-gray-400 hover:text-gray-300 transition-colors"
           >
             ← 로그인으로 돌아가기

@@ -80,7 +80,7 @@ export default function ResetPasswordPage() {
           </p>
           <div className="pt-4">
             <Link
-              href="/auth/login"
+              href="/login"
               className="text-sm text-blue-400 hover:text-blue-300 transition-colors"
             >
               ← 로그인으로 돌아가기
@@ -135,7 +135,7 @@ export default function ResetPasswordPage() {
         {/* Back to Login */}
         <div className="text-center">
           <Link
-            href="/auth/login"
+            href="/login"
             className="text-sm text-gray-400 hover:text-gray-300 transition-colors"
           >
             ← 로그인으로 돌아가기
