@@ -25,6 +25,9 @@ export function useRfps(params?: ListRfpsParams) {
   return useQuery({
     queryKey: rfpKeys.list(params),
     queryFn: () => rfpService.listRfps(params),
+    retry: 1, // 1번만 재시도
+    staleTime: 1000 * 60, // 1분간 캐시
+    gcTime: 1000 * 60 * 5, // 5분간 메모리 유지
   })
 }
 

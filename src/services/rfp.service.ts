@@ -71,8 +71,16 @@ export async function listRfps(params?: ListRfpsParams) {
   const { data, error, count } = await query
 
   if (error) {
+    console.error('Supabase RFP query error:', {
+      message: error.message,
+      details: error.details,
+      hint: error.hint,
+      code: error.code,
+    })
     throw new Error(`Failed to fetch RFPs: ${error.message}`)
   }
+
+  console.log(`✅ RFPs fetched successfully: ${(data || []).length} items`)
 
   return {
     data: (data || []).map(transformRfp),

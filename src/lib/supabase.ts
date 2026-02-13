@@ -22,9 +22,16 @@ export function createClient() {
     const url = process.env.NEXT_PUBLIC_SUPABASE_URL
     const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
     if (!url || !key) {
+      console.error('❌ Supabase environment variables missing:', { url: !!url, key: !!key })
       throw new Error('Missing Supabase environment variables')
     }
-    return createSupabaseClient<Database>(url, key)
+    console.log('✅ Supabase client initialized:', url)
+    return createSupabaseClient<Database>(url, key, {
+      auth: {
+        persistSession: true,
+        autoRefreshToken: true,
+      },
+    })
   }
   // 빌드 타임에는 더미 클라이언트 반환
   return createSupabaseClient<Database>(supabaseUrl, supabaseAnonKey)
